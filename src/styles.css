@@ -1,0 +1,49 @@
+/* You can add global styles to this file, and also import other style files */
+
+body .ui-tabview .ui-tabview-panels{
+    background-color: whitesmoke !important;
+}
+
+.static-data{
+    border: 1px solid lightgray;
+    border-radius: 6px;
+    font-weight: 600;
+    background-color: cadetblue;
+    color: floralwhite;
+}
+
+body .ui-table .ui-table-thead > tr > th {
+    color: floralwhite !important;
+    background-color: cadetblue !important;
+    border: none !important;
+}
+
+body .ui-table .ui-sortable-column .ui-sortable-column-icon {
+    color: floralwhite !important;
+    font-size: 1.1em !important;
+}
+
+body .ui-tabview .ui-tabview-panels {
+    padding: 0px !important;
+    border: none !important;
+}
+
+body .ui-widget {
+    border-bottom: 1px solid #ccc !important;
+}
+
+body .ui-table .ui-table-caption {
+    background-color: cadetblue !important;
+    color: floralwhite !important;
+    border: 1px solid lightgray !important;
+    display: flex !important;
+     text-align: center !important;
+     border-radius: 2px !important;
+     justify-content: center !important;
+} 
+.district-search-input {
+    border-radius: 12px !important;
+    width: 180px !important;
+    margin-left: 10px !important;
+    text-align: center !important;
+}

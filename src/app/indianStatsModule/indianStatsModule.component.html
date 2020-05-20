@@ -1,0 +1,52 @@
+<div class="ui-g-12 ui-md-12 ui-lg-12 static-data" *ngIf = "totalCount.length">
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Total Confirmed: {{totalCount[0].confirmed}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Total Deceased: {{totalCount[0].deaths}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Total Recovered: {{totalCount[0].recovered}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Total Active: {{totalCount[0].active}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Daily Confirmed: {{totalCount[0].deltaconfirmed}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Daily Deceased: {{totalCount[0].deltadeaths}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Daily Recovered: {{totalCount[0].deltarecovered}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Updated On: {{totalCount[0].lastupdatedtime.trim().substr(0,10)}}</div>
+</div>
+<div class = "ui-g-12 ui-md-12 ui-lg-12 indian-stats-div">
+    <p-table [columns] ="cols"
+             [value] ="data"  
+             (sortFunction)="customSort($event)"
+             [customSort]="true"
+             [scrollable]="true" 
+             scrollHeight="99%">
+             
+    <ng-template pTemplate="header" 
+                let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body"
+            let-tableFields
+            let-rowData>
+                <tr *ngIf = "tableFields.state !== 'Total' ">
+                    <td>{{tableFields.state}}</td>
+                    <td>{{tableFields.confirmed}}</td>
+                    <td>{{tableFields.deaths}}</td>
+                    <td>{{tableFields.recovered}}</td>
+                    <td>{{tableFields.deltaconfirmed}}</td>
+                    <td>{{tableFields.deltadeaths}}</td>
+                    <td>{{tableFields.deltarecovered}}</td>
+                    <td>{{tableFields.active}}</td>
+                    <td>{{tableFields.lastupdatedtime}}</td>
+                </tr>
+    </ng-template>
+        <ng-template pTemplate="emptymessage"
+            let-columns>
+                <tr>
+                    <td *ngIf="data.length === 0">
+                        No records found
+                     </td>
+                </tr>
+        </ng-template>
+</p-table>
+</div>

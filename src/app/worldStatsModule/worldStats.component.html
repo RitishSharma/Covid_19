@@ -1,0 +1,50 @@
+
+<div class="ui-g-12 ui-md-12 ui-lg-12 static-data" *ngIf = "!!worldCount">
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Total Confirmed: {{worldCount.TotalConfirmed}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Total Deceased:  {{worldCount.TotalDeaths}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Total Recovered:  {{worldCount.TotalRecovered}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Daily Confirmed:  {{worldCount.NewConfirmed}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Daily Deceased: {{worldCount.NewDeaths}}</div>
+    <div class="ui-g-2 ui-md-2 ui-lg-2">Daily Recovered: {{worldCount.NewRecovered}}</div>
+</div>
+<div class = "ui-g-12 ui-md-12 ui-lg-12 world-stats-div">
+    <p-table [columns] ="cols"
+             [value] ="countriesData"  
+             (sortFunction)="customSort($event)"
+             [customSort]="true"
+             [scrollable]="true" 
+             scrollHeight="99%">
+             
+    <ng-template pTemplate="header" 
+                let-columns>
+        <tr>
+            <th *ngFor="let col of columns" [pSortableColumn]="col.field">
+                {{col.header}}
+                <p-sortIcon [field]="col.field"></p-sortIcon>
+            </th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body"
+            let-tableFields
+            let-rowData>
+                <tr >
+                    <td>{{tableFields.Country}}</td>
+                    <td>{{tableFields.TotalConfirmed}}</td>
+                    <td>{{tableFields.NewConfirmed}}</td>
+                    <td>{{tableFields.TotalDeaths}}</td>
+                    <td>{{tableFields.NewDeaths}}</td>
+                    <td>{{tableFields.TotalRecovered}}</td>
+                    <td>{{tableFields.NewRecovered}}</td>
+                    <td>{{tableFields.Date | date: 'dd/mm/yyyy h:mm:ss a'}}</td>
+                </tr>
+    </ng-template>
+        <ng-template pTemplate="emptymessage"
+            let-columns>
+                <tr>
+                    <td *ngIf="countriesData.length === 0">
+                        No records found
+                     </td>
+                </tr>
+        </ng-template>
+</p-table>
+</div>

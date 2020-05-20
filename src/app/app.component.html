@@ -1,0 +1,25 @@
+
+<div class = "ui-g-12 ui-md-12 ui-lg-12 main-container ">
+  <div class = "static-content-header">
+    Covid-19 Statistics As Per By Covid-Org-API-Data
+  </div>
+<p-tabView (onChange)="onTabChange($event)">
+  <p-tabPanel header="Covid-19-World-Stats">
+      <app-worldstats-module ></app-worldstats-module>
+</p-tabPanel>
+
+<p-tabPanel header="Covid-19-India-Stats">
+    <ng-template pTemplate="content">
+      <app-indianstats-module ></app-indianstats-module>
+  </ng-template>
+</p-tabPanel>
+<p-tabPanel header="Covid-19-Indian_District-Stats">
+  <ng-template pTemplate="content">
+    <app-districtWise-module></app-districtWise-module>
+</ng-template>
+</p-tabPanel>
+
+</p-tabView>
+
+</div>
+
